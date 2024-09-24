@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxControl.MainWindow">
+   <children>
+      <TabPane layoutX="-4.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab onSelectionChanged="#loadAvailableCourses" text="Available courses">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="allCourses" layoutX="10.0" layoutY="12.0" prefHeight="339.0" prefWidth="252.0" />
+                        <Button fx:id="enrollButton" layoutX="269.0" layoutY="324.0" mnemonicParsing="false" onAction="#enroll" prefHeight="28.0" prefWidth="144.0" text="Enroll to course" />
+                        <Button fx:id="fileFolderManagementBtn" layoutX="443.0" layoutY="325.0" mnemonicParsing="false" onAction="#fileFolderManagement" text="FIle/folder management" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="enrolledCoursesTab" onSelectionChanged="#loadEnrolledCourses" text="My courses">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="359.0" prefWidth="501.0">
+                     <children>
+                        <ListView fx:id="allEnrolledCourses" layoutX="20.0" layoutY="29.0" prefHeight="299.0" prefWidth="239.0" />
+                        <Label layoutX="23.0" layoutY="9.0" text="Enrolled courses" />
+                        <Button layoutX="173.0" layoutY="334.0" mnemonicParsing="false" onAction="#leaveCourse" text="Leave course" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="createdCoursesTab" onSelectionChanged="#loadCreatedCourses" text="My created courses">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="359.0" prefWidth="501.0">
+                     <children>
+                        <TableView fx:id="myCreatedCourses" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="571.0">
+                          <columns>
+                            <TableColumn fx:id="colId" prefWidth="49.20001411437988" text="Id" />
+                            <TableColumn fx:id="colName" onEditCommit="#commitDb" prefWidth="173.5999984741211" text="name" />
+                              <TableColumn fx:id="colStart" prefWidth="87.19998168945312" text="start date" />
+                              <TableColumn fx:id="colEnd" prefWidth="91.4000244140625" text="end date" />
+                              <TableColumn fx:id="colPrice" prefWidth="104.00003051757812" text="course price" />
+                              <TableColumn fx:id="deleteCol" prefWidth="64.79998779296875" text="Delete" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="addCourseName" layoutX="21.0" layoutY="255.0" prefHeight="26.0" prefWidth="119.0" />
+                        <Label layoutX="24.0" layoutY="235.0" text="Name" />
+                        <DatePicker fx:id="addCourseStartDate" layoutX="155.0" layoutY="255.0" prefHeight="26.0" prefWidth="126.0" />
+                        <DatePicker fx:id="addCourseEndDate" layoutX="300.0" layoutY="255.0" prefHeight="26.0" prefWidth="128.0" />
+                        <TextField fx:id="addCoursePrice" layoutX="442.0" layoutY="255.0" prefHeight="26.0" prefWidth="94.0" />
+                        <Label layoutX="155.0" layoutY="235.0" text="Start date" />
+                        <Label layoutX="302.0" layoutY="235.0" text="End date" />
+                        <Label layoutX="443.0" layoutY="235.0" text="Course price" />
+                        <Button fx:id="addCourseBtn" layoutX="547.0" layoutY="254.0" mnemonicParsing="false" onAction="#addCourse" prefHeight="26.0" prefWidth="43.0" text="Add" />
+                     </children></AnchorPane>
+                </content>
+            </Tab>
+            <Tab fx:id="userManagementTab" onSelectionChanged="#loadCreatedUsers" text="User management">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="myCreatedUsers" layoutX="5.0" layoutY="14.0" prefHeight="200.0" prefWidth="600.0">
+                          <columns>
+                            <TableColumn fx:id="columnId" prefWidth="42.0" text="id" />
+                            <TableColumn fx:id="columnLogin" prefWidth="70.39999771118164" text="login" />
+                              <TableColumn fx:id="columnPsw" prefWidth="71.0" text="psw" />
+                              <TableColumn fx:id="columnEmail" prefWidth="81.59996032714844" text="email" />
+                              <TableColumn fx:id="columnPhoneNumber" prefWidth="96.0" text="phone_number" />
+                              <TableColumn fx:id="columnName" prefWidth="73.60003662109375" text="name" />
+                              <TableColumn fx:id="columnSurname" prefWidth="86.39996337890625" text="surname" />
+                              <TableColumn fx:id="deleteColumn" prefWidth="74.4000244140625" text="Delete" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="addUserLogin" layoutX="10.0" layoutY="239.0" prefHeight="26.0" prefWidth="86.0" />
+                        <TextField fx:id="addUserPsw" layoutX="101.0" layoutY="239.0" prefHeight="26.0" prefWidth="85.0" />
+                        <TextField fx:id="addUserEmail" layoutX="195.0" layoutY="238.0" prefHeight="26.0" prefWidth="102.0" />
+                        <TextField fx:id="addUserPhoneNumber" layoutX="305.0" layoutY="238.0" prefHeight="26.0" prefWidth="95.0" />
+                        <TextField fx:id="addUserName" layoutX="404.0" layoutY="238.0" prefHeight="26.0" prefWidth="98.0" />
+                        <TextField fx:id="addUserSurname" layoutX="508.0" layoutY="238.0" prefHeight="27.0" prefWidth="92.0" />
+                        <Label layoutX="10.0" layoutY="221.0" text="Login" />
+                        <Label layoutX="103.0" layoutY="221.0" text="Password" />
+                        <Label layoutX="198.0" layoutY="222.0" text="Email" />
+                        <Label layoutX="305.0" layoutY="221.0" text="Phone number" />
+                        <Label layoutX="406.0" layoutY="222.0" text="Name" />
+                        <Label layoutX="510.0" layoutY="221.0" text="Surname" />
+                        <Button layoutX="273.0" layoutY="276.0" mnemonicParsing="false" onAction="#addUser" text="Add user" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
